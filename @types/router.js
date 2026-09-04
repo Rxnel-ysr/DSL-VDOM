@@ -40,7 +40,7 @@
 /**
  * @typedef {Object} RouterOptions
  * @property {string} [prefix]
- * @property {VNodeFunction | null} [defaultRoute]
+ * @property {VNode | VNodeComponent | null} [defaultRoute]
  * @property {VNodeFunction | null} [placeholder]
  * @property {string} [titleId]
  * @property {number} [cacheExp]

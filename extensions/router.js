@@ -256,6 +256,22 @@ class Router {
     }
 
     /**
+     * Register fallback route
+     * @param {VNodeFunction} component 
+     * @param {VNodeComponentSetting} opt 
+     */
+    fallback(component, opt = {}) {
+        let c;
+        if (typeof component == 'function') {
+            c = comp(component, {}, { name: "defaultRoute",  ...opt})
+        } else {
+            c = component;
+        }
+
+        this.option.defaultRoute = c;
+    }
+
+    /**
      * Insert a route into the radix tree
      * @param {string} path
      * @param {RadixNode} node
@@ -556,8 +572,8 @@ class Router {
             return result;
         }
 
-        if (typeof this.option?.defaultRoute === "function") {
-            return this.option.defaultRoute();
+        if (this.option?.defaultRoute) {
+            return this.option.defaultRoute;
         }
 
         return result;
